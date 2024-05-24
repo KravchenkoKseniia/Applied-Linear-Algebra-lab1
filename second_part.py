@@ -12,8 +12,8 @@ def plot_image(image):
 
 
 def rotate_image(image, angle, rows, cols):
-    M = cv.getRotationMatrix2D(((cols - 1) / 2.0, (rows - 1) / 2.0), angle, 1)
-    dst = cv.warpAffine(image, M, (cols, rows))
+    m = cv.getRotationMatrix2D(((cols - 1) / 2.0, (rows - 1) / 2.0), angle, 1)
+    dst = cv.warpAffine(image, m, (cols, rows))
     return dst
 
 
@@ -34,13 +34,13 @@ def reflect_image(image, axis):
 
 def slope_of_axis(image, slope_factor, axis, rows, cols):
     if axis == "x":
-        M = np.float32([[1, slope_factor, 0], [0, 1, 0]])
+        m = np.float32([[1, slope_factor, 0], [0, 1, 0]])
     elif axis == "y":
-        M = np.float32([[1, 0, 0], [slope_factor, 1, 0]])
+        m = np.float32([[1, 0, 0], [slope_factor, 1, 0]])
     else:
         raise ValueError("Invalid axis")
 
-    dst = cv.warpAffine(image, M, (cols, rows))
+    dst = cv.warpAffine(image, m, (cols, rows))
     return dst
 
 
@@ -55,31 +55,31 @@ def main():
 
     # Rotation
 
-    # rotated_image = rotate_image(image, 180, rows, cols)
-    # rotated_image = cv.cvtColor(rotated_image, cv.COLOR_BGR2RGB)
-    #
-    # plot_image(rotated_image)
+    rotated_image = rotate_image(image, 180, rows, cols)
+    rotated_image = cv.cvtColor(rotated_image, cv.COLOR_BGR2RGB)
+
+    plot_image(rotated_image)
 
     # Scaling
 
-    # scaled_image = scale_image(image, 2)
-    # scaled_image = cv.cvtColor(scaled_image, cv.COLOR_BGR2RGB)
-    #
-    # plot_image(scaled_image)
+    scaled_image = scale_image(image, 2)
+    scaled_image = cv.cvtColor(scaled_image, cv.COLOR_BGR2RGB)
+
+    plot_image(scaled_image)
 
     # Reflection
 
-    # reflected_image = reflect_image(image, "y")
-    # reflected_image = cv.cvtColor(reflected_image, cv.COLOR_BGR2RGB)
-    #
-    # plot_image(reflected_image)
+    reflected_image = reflect_image(image, "y")
+    reflected_image = cv.cvtColor(reflected_image, cv.COLOR_BGR2RGB)
+
+    plot_image(reflected_image)
 
     # Slope of axis
 
-    # slope_image = slope_of_axis(image, -0.7, "y", rows, cols)
-    # slope_image = cv.cvtColor(slope_image, cv.COLOR_BGR2RGB)
-    #
-    # plot_image(slope_image)
+    slope_image = slope_of_axis(image, -0.7, "y", rows, cols)
+    slope_image = cv.cvtColor(slope_image, cv.COLOR_BGR2RGB)
+
+    plot_image(slope_image)
 
     # Universal transformation
 

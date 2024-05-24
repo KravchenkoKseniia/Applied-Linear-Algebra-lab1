@@ -124,58 +124,58 @@ def main():
 
     # Rotation
 
-    # asymmetric_vectors_rotated = rotate_object(asymmetric_vectors, 90)
-    # hexagon_rotated = rotate_object(hexagon, 90)
+    asymmetric_vectors_rotated = rotate_object(asymmetric_vectors, 90)
+    hexagon_rotated = rotate_object(hexagon, 90)
     object_3d_rotated = rotate_object(object_3d, 90)
 
-    # plot_object(asymmetric_vectors_rotated, "Asymmetric vectors (rotated)", 'g')
-    # plot_object(hexagon_rotated, "Hexagon (rotated)", 'y')
+    plot_object(asymmetric_vectors_rotated, "Asymmetric vectors (rotated)", 'g')
+    plot_object(hexagon_rotated, "Hexagon (rotated)", 'y')
     plot_object(object_3d_rotated, "3D object (rotated)", 'purple')
 
     # Scaling
 
-    # asymmetric_vectors_scaled = scale_object(asymmetric_vectors, 2)
-    # hexagon_scaled = scale_object(hexagon, 2)
-    #
-    # plot_object(asymmetric_vectors_scaled, "Asymmetric vectors (scaled)", 'g')
-    # plot_object(hexagon_scaled, "Hexagon (scaled)", 'y')
+    asymmetric_vectors_scaled = scale_object(asymmetric_vectors, 2)
+    hexagon_scaled = scale_object(hexagon, 2)
+
+    plot_object(asymmetric_vectors_scaled, "Asymmetric vectors (scaled)", 'g')
+    plot_object(hexagon_scaled, "Hexagon (scaled)", 'y')
 
     # Reflection
 
-    # asymmetric_vectors_reflected_x = reflect_object(asymmetric_vectors, "x")
-    # asymmetric_vectors_reflected_y = reflect_object(asymmetric_vectors, "y")
-    # hexagon_reflected_y = reflect_object(hexagon, "y")
-    # hexagon_reflected_x = reflect_object(hexagon, "x")
-    #
-    # plot_object(asymmetric_vectors_reflected_x, "Asymmetric vectors (reflected x)", 'g')
-    # plot_object(hexagon_reflected_x, "Hexagon (reflected x)", 'y')
-    # plot_object(asymmetric_vectors_reflected_y, "Asymmetric vectors (reflected y)", 'purple')
-    # plot_object(hexagon_reflected_y, "Hexagon (reflected y)", 'orange')
+    asymmetric_vectors_reflected_x = reflect_object(asymmetric_vectors, "x")
+    asymmetric_vectors_reflected_y = reflect_object(asymmetric_vectors, "y")
+    hexagon_reflected_y = reflect_object(hexagon, "y")
+    hexagon_reflected_x = reflect_object(hexagon, "x")
+
+    plot_object(asymmetric_vectors_reflected_x, "Asymmetric vectors (reflected x)", 'g')
+    plot_object(hexagon_reflected_x, "Hexagon (reflected x)", 'y')
+    plot_object(asymmetric_vectors_reflected_y, "Asymmetric vectors (reflected y)", 'purple')
+    plot_object(hexagon_reflected_y, "Hexagon (reflected y)", 'orange')
 
     # Slope of axis
 
-    # slope_x_asymmetric_vectors = slope_of_axis(asymmetric_vectors, 2, "x")
-    # slope_y_asymmetric_vectors = slope_of_axis(asymmetric_vectors, 0.5, "y")
-    # slope_x_hexagon = slope_of_axis(hexagon, 2, "x")
-    # slope_y_hexagon = slope_of_axis(hexagon, 0.5, "y")
-    #
-    # plot_object(slope_x_asymmetric_vectors, "Slope of x-axis", 'g')
-    # plot_object(slope_y_asymmetric_vectors, "Slope of y-axis", 'y')
-    # plot_object(slope_x_hexagon, "Slope of x-axis", 'purple')
-    # plot_object(slope_y_hexagon, "Slope of y-axis", 'orange')
+    slope_x_asymmetric_vectors = slope_of_axis(asymmetric_vectors, 2, "x")
+    slope_y_asymmetric_vectors = slope_of_axis(asymmetric_vectors, 0.5, "y")
+    slope_x_hexagon = slope_of_axis(hexagon, 2, "x")
+    slope_y_hexagon = slope_of_axis(hexagon, 0.5, "y")
+
+    plot_object(slope_x_asymmetric_vectors, "Slope of x-axis", 'g')
+    plot_object(slope_y_asymmetric_vectors, "Slope of y-axis", 'y')
+    plot_object(slope_x_hexagon, "Slope of x-axis", 'purple')
+    plot_object(slope_y_hexagon, "Slope of y-axis", 'orange')
 
     # Universal transformation
 
-    # transformation_matrix = np.array([
-    #     [-5, 7],
-    #     [0.8, 3]
-    # ])
-    #
-    # asymmetric_vectors_transformed = universal_transformation(asymmetric_vectors, transformation_matrix)
-    # hexagon_transformed = universal_transformation(hexagon, transformation_matrix)
-    #
-    # plot_object(asymmetric_vectors_transformed, "Asymmetric vectors (transformed)", 'pink')
-    # plot_object(hexagon_transformed, "Hexagon (transformed)", 'skyblue')
+    transformation_matrix = np.array([
+        [-5, 7],
+        [0.8, 3]
+    ])
+
+    asymmetric_vectors_transformed = universal_transformation(asymmetric_vectors, transformation_matrix)
+    hexagon_transformed = universal_transformation(hexagon, transformation_matrix)
+
+    plot_object(asymmetric_vectors_transformed, "Asymmetric vectors (transformed)", 'pink')
+    plot_object(hexagon_transformed, "Hexagon (transformed)", 'skyblue')
 
 
 if __name__ == "__main__":
