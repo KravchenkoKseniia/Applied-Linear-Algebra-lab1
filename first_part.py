@@ -15,24 +15,44 @@ def plot_object(obj, title, color):
 
 def rotate_object(obj, angle):
     theta = np.radians(angle)
-    rotation = np.array([
-        [np.cos(theta), -np.sin(theta)],
-        [np.sin(theta), np.cos(theta)]
-    ])
+
+    if obj.shape[1] == 2:
+        rotation = np.array([
+            [np.cos(theta), -np.sin(theta)],
+            [np.sin(theta), np.cos(theta)]
+        ])
+    elif obj.shape[1] == 3:
+        rotation = np.array([
+            [np.cos(theta), -np.sin(theta), 0],
+            [np.sin(theta), np.cos(theta), 0],
+            [0, 0, 1]
+        ])
+    else:
+        raise ValueError("Invalid object shape")
 
     return np.dot(obj, rotation)
 
 
 def scale_object(obj, scale):
-    scale_matrix = np.array([
-        [scale, 0],
-        [0, scale]
-    ])
+    if obj.shape[1] == 2:
+        scale_matrix = np.array([
+            [scale, 0],
+            [0, scale]
+        ])
+    elif obj.shape[1] == 3:
+        scale_matrix = np.array([
+            [scale, 0, 0],
+            [0, scale, 0],
+            [0, 0, 1]
+        ])
+    else:
+        raise ValueError("Invalid object shape")
 
     return np.dot(obj, scale_matrix)
 
 
 def reflect_object(obj, axis):
+
     if axis == "x":
         reflection = np.array([
             [1, 0],
@@ -100,14 +120,17 @@ def main():
 
     plot_object(asymmetric_vectors, "Asymmetric vectors (original)", 'r')
     plot_object(hexagon, "Hexagon (original)", 'b')
+    plot_object(object_3d, "3D object (original)", 'g')
 
     # Rotation
 
     # asymmetric_vectors_rotated = rotate_object(asymmetric_vectors, 90)
     # hexagon_rotated = rotate_object(hexagon, 90)
+    object_3d_rotated = rotate_object(object_3d, 90)
 
     # plot_object(asymmetric_vectors_rotated, "Asymmetric vectors (rotated)", 'g')
     # plot_object(hexagon_rotated, "Hexagon (rotated)", 'y')
+    plot_object(object_3d_rotated, "3D object (rotated)", 'purple')
 
     # Scaling
 
