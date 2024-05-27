@@ -1,5 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+
+def plot_object_3d(obj, title, color):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    xs = obj[:, 0]
+    ys = obj[:, 1]
+    zs = obj[:, 2]
+
+    ax.plot(xs, ys, zs, color)
+
+    ax.set_xlabel('X Label')
+    ax.set_ylabel('Y Label')
+    ax.set_zlabel('Z Label')
+
+    plt.title(title)
+    plt.show()
 
 
 def plot_object(obj, title, color):
@@ -120,62 +139,80 @@ def main():
 
     plot_object(asymmetric_vectors, "Asymmetric vectors (original)", 'r')
     plot_object(hexagon, "Hexagon (original)", 'b')
-    plot_object(object_3d, "3D object (original)", 'g')
+    plot_object_3d(object_3d, "3D object (original)", 'g')
 
-    # Rotation
+    # # Rotation
+    #
+    # asymmetric_vectors_rotated = rotate_object(asymmetric_vectors, 90)
+    # hexagon_rotated = rotate_object(hexagon, 90)
+    # object_3d_rotated = rotate_object(object_3d, 90)
+    #
+    # plot_object(asymmetric_vectors_rotated, "Asymmetric vectors (rotated)", 'g')
+    # plot_object(hexagon_rotated, "Hexagon (rotated)", 'y')
+    # plot_object(object_3d_rotated, "3D object (rotated)", 'purple')
+    #
+    # # Scaling
+    #
+    # asymmetric_vectors_scaled = scale_object(asymmetric_vectors, 2)
+    # hexagon_scaled = scale_object(hexagon, 2)
+    #
+    # plot_object(asymmetric_vectors_scaled, "Asymmetric vectors (scaled)", 'g')
+    # plot_object(hexagon_scaled, "Hexagon (scaled)", 'y')
+    #
+    # # Reflection
+    #
+    # asymmetric_vectors_reflected_x = reflect_object(asymmetric_vectors, "x")
+    # asymmetric_vectors_reflected_y = reflect_object(asymmetric_vectors, "y")
+    # hexagon_reflected_y = reflect_object(hexagon, "y")
+    # hexagon_reflected_x = reflect_object(hexagon, "x")
+    #
+    # plot_object(asymmetric_vectors_reflected_x, "Asymmetric vectors (reflected x)", 'g')
+    # plot_object(hexagon_reflected_x, "Hexagon (reflected x)", 'y')
+    # plot_object(asymmetric_vectors_reflected_y, "Asymmetric vectors (reflected y)", 'purple')
+    # plot_object(hexagon_reflected_y, "Hexagon (reflected y)", 'orange')
+    #
+    # # Slope of axis
+    #
+    # slope_x_asymmetric_vectors = slope_of_axis(asymmetric_vectors, 2, "x")
+    # slope_y_asymmetric_vectors = slope_of_axis(asymmetric_vectors, 0.5, "y")
+    # slope_x_hexagon = slope_of_axis(hexagon, 2, "x")
+    # slope_y_hexagon = slope_of_axis(hexagon, 0.5, "y")
+    #
+    # plot_object(slope_x_asymmetric_vectors, "Slope of x-axis", 'g')
+    # plot_object(slope_y_asymmetric_vectors, "Slope of y-axis", 'y')
+    # plot_object(slope_x_hexagon, "Slope of x-axis", 'purple')
+    # plot_object(slope_y_hexagon, "Slope of y-axis", 'orange')
+    #
+    # # Universal transformation
+    #
+    # transformation_matrix = np.array([
+    #     [-5, 7],
+    #     [0.8, 3]
+    # ])
+    #
+    # asymmetric_vectors_transformed = universal_transformation(asymmetric_vectors, transformation_matrix)
+    # hexagon_transformed = universal_transformation(hexagon, transformation_matrix)
+    #
+    # plot_object(asymmetric_vectors_transformed, "Asymmetric vectors (transformed)", 'pink')
+    # plot_object(hexagon_transformed, "Hexagon (transformed)", 'skyblue')
 
-    asymmetric_vectors_rotated = rotate_object(asymmetric_vectors, 90)
-    hexagon_rotated = rotate_object(hexagon, 90)
-    object_3d_rotated = rotate_object(object_3d, 90)
+    # Theoretical question 5
 
-    plot_object(asymmetric_vectors_rotated, "Asymmetric vectors (rotated)", 'g')
-    plot_object(hexagon_rotated, "Hexagon (rotated)", 'y')
-    plot_object(object_3d_rotated, "3D object (rotated)", 'purple')
+    # First transformation
+    rotated_hexagon = rotate_object(hexagon, 90)
+    scaled_hexagon = scale_object(rotated_hexagon, 2)
+    reflected_hexagon = reflect_object(scaled_hexagon, "x")
 
-    # Scaling
+    plot_object(reflected_hexagon, "first transformations", 'orange')
 
-    asymmetric_vectors_scaled = scale_object(asymmetric_vectors, 2)
-    hexagon_scaled = scale_object(hexagon, 2)
+    # Second transformation
+    reflected_hexagon2 = reflect_object(hexagon, "x")
+    rotated_hexagon2 = rotate_object(reflected_hexagon2, 90)
+    scaled_hexagon2 = scale_object(rotated_hexagon2, 2)
 
-    plot_object(asymmetric_vectors_scaled, "Asymmetric vectors (scaled)", 'g')
-    plot_object(hexagon_scaled, "Hexagon (scaled)", 'y')
+    plot_object(scaled_hexagon2, "second transformations", 'purple')
 
-    # Reflection
 
-    asymmetric_vectors_reflected_x = reflect_object(asymmetric_vectors, "x")
-    asymmetric_vectors_reflected_y = reflect_object(asymmetric_vectors, "y")
-    hexagon_reflected_y = reflect_object(hexagon, "y")
-    hexagon_reflected_x = reflect_object(hexagon, "x")
-
-    plot_object(asymmetric_vectors_reflected_x, "Asymmetric vectors (reflected x)", 'g')
-    plot_object(hexagon_reflected_x, "Hexagon (reflected x)", 'y')
-    plot_object(asymmetric_vectors_reflected_y, "Asymmetric vectors (reflected y)", 'purple')
-    plot_object(hexagon_reflected_y, "Hexagon (reflected y)", 'orange')
-
-    # Slope of axis
-
-    slope_x_asymmetric_vectors = slope_of_axis(asymmetric_vectors, 2, "x")
-    slope_y_asymmetric_vectors = slope_of_axis(asymmetric_vectors, 0.5, "y")
-    slope_x_hexagon = slope_of_axis(hexagon, 2, "x")
-    slope_y_hexagon = slope_of_axis(hexagon, 0.5, "y")
-
-    plot_object(slope_x_asymmetric_vectors, "Slope of x-axis", 'g')
-    plot_object(slope_y_asymmetric_vectors, "Slope of y-axis", 'y')
-    plot_object(slope_x_hexagon, "Slope of x-axis", 'purple')
-    plot_object(slope_y_hexagon, "Slope of y-axis", 'orange')
-
-    # Universal transformation
-
-    transformation_matrix = np.array([
-        [-5, 7],
-        [0.8, 3]
-    ])
-
-    asymmetric_vectors_transformed = universal_transformation(asymmetric_vectors, transformation_matrix)
-    hexagon_transformed = universal_transformation(hexagon, transformation_matrix)
-
-    plot_object(asymmetric_vectors_transformed, "Asymmetric vectors (transformed)", 'pink')
-    plot_object(hexagon_transformed, "Hexagon (transformed)", 'skyblue')
 
 
 if __name__ == "__main__":

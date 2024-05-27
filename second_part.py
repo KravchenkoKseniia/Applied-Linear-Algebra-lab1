@@ -55,7 +55,7 @@ def main():
 
     # Rotation
 
-    rotated_image = rotate_image(image, 180, rows, cols)
+    rotated_image = rotate_image(image, 134, rows, cols)
     rotated_image = cv.cvtColor(rotated_image, cv.COLOR_BGR2RGB)
 
     plot_image(rotated_image)
