@@ -6,8 +6,8 @@ import numpy as np
 def plot_image(image):
     plt.imshow(image)
     plt.grid(True)
-    plt.gca().set_xlim([0, 5000])
-    plt.gca().set_ylim([5000, 0])
+    plt.gca().set_xlim([0, 500])
+    plt.gca().set_ylim([500, 0])
     plt.show()
 
 
@@ -50,12 +50,12 @@ def universal_transform(image, transformation_matrix, rows, cols):
 
 
 def main():
-    image = cv.imread("Mona_Lisa.jpg")
+    image = cv.imread("095eebf0eaad40862d700f5dbbf0d.jpg")
     rows, cols, _ = image.shape
 
     # Rotation
 
-    rotated_image = rotate_image(image, 134, rows, cols)
+    rotated_image = rotate_image(image, 67, rows, cols)
     rotated_image = cv.cvtColor(rotated_image, cv.COLOR_BGR2RGB)
 
     plot_image(rotated_image)
